@@ -1,4 +1,4 @@
-import { incomeModel } from "../models/Income.models";
+import { incomeModel } from "../models/Income.model";
 
 export async function addIncome(req, res) {
   const { title, amount, category, description, date } = req.body;

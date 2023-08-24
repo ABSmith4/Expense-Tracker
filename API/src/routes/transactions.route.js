@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { deleteExpense, addExpense, getExpense } from "../controllers/expense.controller";
-import { getIncome, addIncome, deleteIncome } from "../controllers/income.controllers";
+import { getIncome, addIncome, deleteIncome } from "../controllers/income.controller";
 
 const router = express.Router();
 
