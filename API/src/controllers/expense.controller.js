@@ -1,6 +1,6 @@
 import { expenseModel } from "../models/expenses.models";
 
-export default async function addExpense(req, res) {
+export async function addExpense(req, res) {
   const { title, amount, category, description, date } = req.body;
 
   const expense = expenseModel({
@@ -26,7 +26,7 @@ export default async function addExpense(req, res) {
   console.log(expense)
 }
 
-export default async function getExpense(req, res) {
+export async function getExpense(req, res) {
   try{
     const foundExpense = await expenseModel.find().sort({createdAt: -1})
     return res.status(200).json(foundExpense)
@@ -35,7 +35,7 @@ export default async function getExpense(req, res) {
   }
 }
 
-export default async function deleteExpense(req, res) {
+export async function deleteExpense(req, res) {
   const { id } = req.params;
   try {
     await expenseModel.findByIdAndDelete(id)

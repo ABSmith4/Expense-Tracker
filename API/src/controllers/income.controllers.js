@@ -1,6 +1,6 @@
 import { incomeModel } from "../models/Income.models";
 
-export default async function addIncome(req, res) {
+export async function addIncome(req, res) {
   const { title, amount, category, description, date } = req.body;
 
   const income = incomeModel({
@@ -26,7 +26,7 @@ export default async function addIncome(req, res) {
   console.log(income)
 }
 
-export default async function getIncome(req, res) {
+export async function getIncome(req, res) {
   try{
     const foundIncome = await incomeModel.find().sort({createdAt: -1})
     return res.status(200).json(foundIncome)
@@ -35,7 +35,7 @@ export default async function getIncome(req, res) {
   }
 }
 
-export default async function deleteIncome(req, res) {
+export async function deleteIncome(req, res) {
   const { id } = req.params;
   try {
     await incomeModel.findByIdAndDelete(id)

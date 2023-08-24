@@ -1,7 +1,7 @@
-const express = require('express')
-const cors = require('cors');
-const { db } = require('./db/db');
-const {readdirSync} = require('fs')
+import express from 'express';
+// import dotenv from 'dotenv';
+import cors from 'cors';
+import { readdirSync } from 'fs';
 const app = express()
 
 require('dotenv').config()
@@ -18,7 +18,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-const db = async () => {
+async function db() {
   try {
       mongoose.set('strictQuery', false)
       await mongoose.connect(process.env.MONGO_URL)
