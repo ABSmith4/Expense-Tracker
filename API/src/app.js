@@ -1,32 +1,26 @@
+import 'dotenv/config.js'
 import express from 'express';
 // import dotenv from 'dotenv';
+import db from './config/db.config.js';
 import cors from 'cors';
-import { readdirSync } from 'fs';
+import index from './routes/index.js';
 const app = express()
-
-require('dotenv').config()
 
 //middlewares
 app.use(express.json())
 app.use(cors())
 
 //routes
-readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
+app.use('/api', index); 
+
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
-
-async function db() {
-  try {
-      mongoose.set('strictQuery', false)
-      await mongoose.connect(process.env.MONGO_URL)
-      console.log('Db Connected')
-  } catch (error) {
-      console.log('DB Connection Error');
-  }
+const server = () => {
+  db()
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+  });
 }
 
-db()
+server();
 export default app;
