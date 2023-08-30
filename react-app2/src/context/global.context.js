@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useContext, useState } from "react"
 import axios from 'axios'
+import dotenv from 'dotenv';
+dotenv.config()
 
-
-const BASE_URL = "http://localhost:5000/api/v1/";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 
 const GlobalContext = React.createContext()
