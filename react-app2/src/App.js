@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react'
 //import viteLogo from '/vite.svg'
 import styled from "styled-components";
 import bg from './images/background.png'
-import {MainLayout} from './styles/Layouts'
+import { MainLayout } from './styles/Layouts'
 import Orb from './Components/Orb/Orb'
 import Navigation from './Components/Navigation/Navigation'
 import Dashboard from './Components/Dashboard/Dashboard';
